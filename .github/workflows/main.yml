@@ -19,7 +19,7 @@ jobs:
       - name: Prepare virtualenv for tools
         run: |
           python -m venv .venv
-          poetry install
+          poetry install --no-root
       - name: Restore Conan cache
         uses: actions/cache@v3
         env:
