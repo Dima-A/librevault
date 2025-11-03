@@ -40,25 +40,25 @@ jobs:
           conan profile update settings.build_type=Release default
           conan install .. --build=outdated --build=cascade
           conan remove "*" --src --builds --system-reqs --force
-#      - name: Build application
-#        run: |
-#          cd build
-#          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=built_binaries -DBUILD_UPDATER=OFF ..
-#          cmake --build . --config Release
-#      - name: Package application
-#        run: |
-#          .venv\scripts\activate.ps1
-#          cd build
-#          cmake --install .
-#          python ../scripts/configure_innosetup.py --packaging_dir pack --install_dir built_binaries
-#          pushd pack
-#          iscc librevault.iss
-#          popd
-#      - name: Upload artifact
-#        uses: actions/upload-artifact@v1
-#        with:
-#          name: librevault-innosetup-windows-x64
-#          path: build/pack/result.exe
+      - name: Build application
+        run: |
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=built_binaries -DBUILD_UPDATER=OFF ..
+          cmake --build . --config Release
+      - name: Package application
+        run: |
+          .venv\scripts\activate.ps1
+          cd build
+          cmake --install .
+          python ../scripts/configure_innosetup.py --packaging_dir pack --install_dir built_binaries
+          pushd pack
+          iscc librevault.iss
+          popd
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: librevault-innosetup-windows-x64
+          path: build/pack/result.exe
 
   build-linux:
     runs-on: ubuntu-20.04
