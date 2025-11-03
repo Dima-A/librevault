@@ -55,7 +55,7 @@ jobs:
           iscc librevault.iss
           popd
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: librevault-innosetup-windows-x64
           path: build/pack/result.exe
