@@ -11,7 +11,7 @@ jobs:
       - name: Install system-wide dependencies
         run: |
           choco install innosetup
-          python -m pip install poetry
+          python -m pip install poetry --no-root
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
